@@ -1,70 +1,4 @@
-// const diagram = document.getElementById('diagram');
 
-// class Container {
-//     constructor(nomClasse, attributs, operations) {
-//         this.nomClasse = nomClasse;
-//         this.attributs = attributs;
-//         this.operations = operations;
-//     }
-// }
-
-// const MonDiagramme = {
-//     classe: {
-//       id: 1,
-//       nom: 'Etudiant',
-//       associeA: null, 
-//       attributs: ['nom', 'age', 'email'],
-//       operations: ['inscrire()', 'etudier()']
-//     },
-//     classe: {
-//         id: 2,
-//         nom: 'Professeur',
-//         associeA: 1, 
-//         attributs: ['nom', 'age', 'email'],
-//         operations: ['inscrire()', 'etudier()']
-//       }
-// };
-
-// const etudiantDiagram = new Container(
-//     MonDiagramme.classe.nom, 
-//     MonDiagramme.classe.attributs, 
-//     MonDiagramme.classe.operations
-// );
-
-// function createClassDiagram(container) {
-//     diagram.innerHTML = ""; 
-
-//     const classDiagram = document.createElement('div');
-//     classDiagram.className = "class-diagram";
-//     classDiagram.style.border = "1px solid black";
-//     classDiagram.style.padding = "10px";
-//     classDiagram.style.margin = "10px";
-    
-//     const classTitre = document.createElement('h3');
-//     classTitre.innerText = `${container.nomClasse}`;
-    
-//     const attribuContainer = document.createElement('ul');
-//     container.attributs.forEach(attribu => {
-//         const attribuElement = document.createElement('li');
-//         attribuElement.innerText = attribu;
-//         attribuContainer.appendChild(attribuElement);
-//     });
-
-//     const methodsContainer = document.createElement('ul');
-//     container.operations.forEach(method => {
-//         const methodElement = document.createElement('li');
-//         methodElement.innerText = method;
-//         methodsContainer.appendChild(methodElement);
-//     });
-
-//     classDiagram.appendChild(classTitre);
-//     classDiagram.appendChild(attribuContainer);
-//     classDiagram.appendChild(methodsContainer);
-    
-//     diagram.appendChild(classDiagram);
-// }
-
-// document.getElementById('new').addEventListener('click', () => createClassDiagram(etudiantDiagram));
 
 
 
@@ -126,4 +60,28 @@ class Color {
   }
   
   
+  function showAvailablePlaces(places) {
+    console.log("Available places:");
+    places.forEach((place) => {
+      if (place.isAvailable) {
+        console.log(`- Place ID: ${place.id}, Color: ${place.color.name}`);
+      }
+    });
+  }
   
+  function main() {
+    const film = new Film("X Man");
+    const salle = new Salle("Atlas", "1er étage à gauche");
+    const seance = new Seance(film, "18h00", salle);
+    const place1 = new Place(seance, "Rouge", true); 
+    const place2 = new Place(seance, "Rouge", false); 
+    const place3 = new Place(seance, "Noir", true);   
+    const place4 = new Place(seance, "Bleu", false);  
+    const place5 = new Place(seance, "Vert", true);   
+  
+    const places = [place1, place2, place3, place4, place5];
+  
+    showAvailablePlaces(places);
+  }
+  
+  main();
