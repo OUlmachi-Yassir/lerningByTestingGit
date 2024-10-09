@@ -67,3 +67,63 @@
 // document.getElementById('new').addEventListener('click', () => createClassDiagram(etudiantDiagram));
 
 
+
+class Color {
+    constructor(name) {
+      this.name = name;
+    }
+    toString() {
+      return `de la couleur ${this.name}`;
+    }
+  }
+  
+  class Place {
+    constructor(seance, colorName, isAvailable = true) {
+      this.id = new Date().getTime();
+      this.seance = seance;
+      this.color = new Color(colorName);
+      this.isAvailable = isAvailable; 
+
+    }
+  
+    toString() {
+      return `La place ${this.id} de la séance ${this.seance} et ${this.color}`;
+    }
+  }
+  
+  class Seance {
+    constructor(film, horaire, salle) {
+      this.film = film;
+      this.horaire = horaire;
+      this.salle = salle;
+    }
+  
+    toString() {
+      return `Séance : ${this.film} présentée à ${this.horaire} dans la salle ${this.salle}`;
+    }
+  }
+  
+  class Film {
+    constructor(name) {
+      this.name = name;
+    }
+  
+    toString() {
+      return `Film ${this.name}`;
+    }
+  }
+  
+  class Salle {
+    constructor(name, position, places) {
+      this.name = name;
+      this.position = position;
+      this.places = new Place [places];
+    }
+  
+    toString() {
+      return `La salle ${this.name} se trouve à ${this.position}`;
+    }
+  }
+  
+  
+  
